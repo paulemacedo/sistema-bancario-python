@@ -10,7 +10,6 @@ limite = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
-3
 
 while True:
   op = input(menu)
