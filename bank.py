@@ -1,6 +1,4 @@
 import re
-#Dica: Para vincular um usuário a uma conta, filtre a lista de usuários buscando o número do CPF informado para cada usuário da lista.
-
 
 def extrair_numeros_cpf(cpf):
     cpf_numerico = re.sub(r'\D', '', cpf)
