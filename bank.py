@@ -33,7 +33,7 @@ def criar_usuario(Usuarios):
     print ("usuario criado")
         
 def criar_conta(conta, Usuarios):
-    agencia = "0001"
+    AGENCIA = "0001"
     numero_conta = len(conta) + 1  #não funcioonaria pra caso houvesse exclusão de contas
     cpf = input("Digite o CPF do usuario cadastrado")
     usuario = filtrar_usuario(cpf, Usuarios)
@@ -80,17 +80,8 @@ def realizar_extrato(saldo, /, * , extrato):
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f}")
     print("==========================================")
-    
-def main():  
 
-  LIMITE_SAQUES = 3
-  saldo = 0
-  limite = 500
-  extrato = ""
-  numero_saques = 0
-  usuarios = []
-  conta = []
-  
+def menu():
   menu = """
   ============ Paule's bank ===============
   [1] Criar Usuario
@@ -103,10 +94,20 @@ def main():
   [0] Sair
   =========================================
   => """
+  return input(menu)
+
+def main():  
+
+  LIMITE_SAQUES = 3
+  saldo = 0
+  limite = 500
+  extrato = ""
+  numero_saques = 0
+  usuarios = []
+  conta = []
 
   while True:
-
-      opcao = input(menu)
+      opcao = menu()
           
       if opcao == "1":
           criar_usuario(usuarios)
