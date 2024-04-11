@@ -93,45 +93,44 @@ def main():
   
   menu = """
   ============ Paule's bank ===============
-  [u] Criar Usuario
-  [c] Criar Conta
-  [lu] Listar Usuarios
-  [lc] Listar Contas
-  [d] Depositar
-  [s] Sacar
-  [e] Extrato
-  [q] Sair
+  [1] Criar Usuario
+  [2] Criar Conta
+  [3] Listar Usuarios
+  [4] Listar Contas
+  [5] Depositar
+  [6] Sacar
+  [7] Extrato
+  [0] Sair
   =========================================
   => """
 
   while True:
 
       opcao = input(menu)
-
-      if opcao == "d":
+          
+      if opcao == "1":
+          criar_usuario(usuarios)
+      
+      elif opcao == "2":
+          criar_conta(conta, usuarios)
+                
+      elif opcao == "3":
+          listar(usuarios)
+          
+      elif opcao == "4":
+          listar(conta)
+      elif opcao == "5":
           valor = float(input("Informe o valor do depósito: "))
           depositar(saldo, valor, extrato)
           
-      elif opcao == "s":
+      elif opcao == "6":
           valor = float(input("Informe o valor do saque: "))
           sacar(saldo=saldo,valor=valor ,extrato=extrato, limite=limite, numero_saques=numero_saques, LIMITE_SAQUES=LIMITE_SAQUES)
 
-      elif opcao == "e":
+      elif opcao == "7":
           realizar_extrato(saldo, extrato=extrato)
-          
-      elif opcao == "u":
-          criar_usuario(usuarios)
-      
-      elif opcao == "c":
-          criar_conta(conta, usuarios)
-                
-      elif opcao == "lu":
-          listar(usuarios)
-          
-      elif opcao == "lc":
-          listar(conta)
 
-      elif opcao == "q":
+      elif opcao == "0":
           break
 
       else:
