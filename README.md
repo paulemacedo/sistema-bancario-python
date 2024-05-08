@@ -10,8 +10,8 @@ O CPF é validado quanto à sua formatação, exigindo 11 dígitos numéricos.
 2. Criação de Conta:
 A função criar_conta(numero_conta, clientes, contas) permite a criação de uma conta vinculada a um usuário existente.
 O número da conta é atribuído automaticamente, e a agência é definida como "0001".
-3. Listar Usuários e Contas:
-As funções listar_contas(contas) e listar_clientes(clientes) permitem listar todos os usuários e contas registrados no sistema, respectivamente.
+3. Listar Contas:
+A funções listar_contas(contas) permitem listar as contas para o respectivo usuario regisrado no sistema
 4. Depósito:
 A função depositar(clientes) permite aos usuários fazer depósitos em suas contas.
 O valor do depósito é adicionado ao saldo da conta e registrado no extrato.
