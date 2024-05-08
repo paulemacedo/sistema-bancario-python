@@ -137,7 +137,7 @@ class Transacao(ABC):
     @abstractmethod
     def register(cls, conta):
         pass
-    
+
 class Deposito(Transacao):
     def __init__(self, valor):
         self._valor = valor
@@ -194,41 +194,23 @@ def recuperar_conta_cliente(cliente):
     #FIXME: não permite cliente escolher a conta
     return cliente.contas[0]
 
-def depositar(clientes):
-    cpf = input("informe o CPF do cliente: ")
+def realizar_transacao(clientes, tipo_transacao):
+    cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
     
     if not cliente:
         print("Cliente não encontrado")
         return
     
-    valor = float(input("informe o valor do deposito"))
-    transacao = Deposito(valor)
+    valor = float(input("Informe o valor da transação: "))
+    transacao = tipo_transacao(valor)
     
     conta = recuperar_conta_cliente(cliente)
     if not conta:
         print("Cliente não possui conta")
         return
     
-    cliente.realizar_transaçao(conta, transacao)
-
-def sacar(clientes):
-    cpf = input("informe o CPF do cliente: ")
-    cliente = filtrar_cliente(cpf, clientes)
-    
-    if not cliente:
-        print("Cliente não encontrado")
-        return
-    
-    valor = float(input("informe o valor do deposito"))
-    transacao = Saque(valor)
-    
-    conta = recuperar_conta_cliente(cliente)
-    if not conta:
-        print("Cliente não possui conta")
-        return
-    
-    cliente.realizar_transaçao(conta, transacao)
+    cliente.realizar_transacao(conta, transacao)
 
 def realizar_extrato(clientes):
     cpf = input("informe o CPF do cliente: ")
@@ -320,10 +302,10 @@ def main():
             listar_contas(contas)
             
         elif opcao == "4":
-            depositar(clientes)
+            realizar_transacao(clientes, Deposito)
             
         elif opcao == "5":
-            sacar(clientes)
+            realizar_transacao(clientes, Saque)
 
         elif opcao == "6":
             realizar_extrato(clientes)
